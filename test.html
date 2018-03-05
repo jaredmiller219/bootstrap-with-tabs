@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <meta charset="utf-8">
+      <title>Go to Tab on Page Reload</title>
+      <meta name="generator" content="Bootply" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <meta name="description" content="Bootstrap Go to Tab on Page Reload example." />
+      <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+      <!--[if lt IE 9]>
+        <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+      <style type="text/css">
+         #test1 { 
+            background-color: #ff7a7a;
+         }
+         #test2 {
+            background-color: #fff99e;
+         }
+         #test3 {
+            background-color: #9ec5ff;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="container">
+         <div class="tabview">
+            <ul class="nav nav-tabs">
+              <li class="nav nav-tabs active">
+                  <a href="#test1" data-toggle="tab">Title 1</a>
+              </li>
+              <li class="nav nav-tabs">
+                  <a href="#test2" data-toggle="tab">Title 2</a>
+              </li>
+              <li class="nav nav-tabs">
+                  <a href="#test3" data-toggle="tab">Title 3</a>
+              </li>
+            </ul>
+            <div class="tab-content">
+               <div class="tab-pane active" id="test1">
+                  <h3>Title 1</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget dignissim enim. Pellentesque enim velit, lobortis ac ligula non, semper facilisis ante. Sed in nibh id tellus bibendum cursus. Curabitur non velit id mi lobortis consequat eget nec enim. Suspendisse non condimentum quam.</p>
+               </div>
+               <div class="tab-pane" id="test2">
+                  <h3>Title 2</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget dignissim enim. Pellentesque enim velit, lobortis ac ligula non, semper facilisis ante. Sed in nibh id tellus bibendum cursus. Curabitur non velit id mi lobortis consequat eget nec enim. Suspendisse non condimentum quam.</p>
+               </div>
+               <div class="tab-pane" id="test3">
+                  <h3>Title 3</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget dignissim enim. Pellentesque enim velit, lobortis ac ligula non, semper facilisis ante. Sed in nibh id tellus bibendum cursus. Curabitur non velit id mi lobortis consequat eget nec enim. Suspendisse non condimentum quam.</p>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+      <script type='text/javascript' src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+      <script type='text/javascript'>
+         $(document).ready(function() {
+           
+           let hash = document.location.hash;
+           let prefix = "!#";
+
+           //change hash url on page reload
+           if (hash) {
+             $('.nav-tabs a[href=\"'+hash.replace(prefix,"")+'\"]').tab('show');
+           } 
+           
+           // change hash url on switch tab
+           $('.nav-tabs a').on('shown.bs.tab', function (e) {
+              window.location.hash = e.target.hash.replace("#", "#" + prefix);
+           });
+         });
+      </script>
+   </body>
+</html>
